@@ -1,15 +1,16 @@
+//프로젝트 전체에 영향을 미치는 항목들을 설정
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-//프로젝트 전체에 영향을 미치는 항목들이다 
-// Bootstrap & Bootswatch CSS 임포트
-// Bootstrap & Bootswatch CSS 임포트
-import 'bootstrap/dist/css/bootstrap.min.css';  // Bootstrap 기본 스타일
-import 'bootswatch/dist/flatly/bootstrap.min.css'; // Bootswatch 테마 (flatly 예시)
 
-
+//디자인 불러오기
+import "bootstrap/dist/css/bootstrap.min.css";
+import 'font-awesome/css/font-awesome.min.css'; // FontAwe
+import "bootswatch/dist/cosmo/bootstrap.min.css"
+import "bootstrap";
+import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

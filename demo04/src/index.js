@@ -4,6 +4,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { IconName } from "react-icons/fc";
+import { FcEmptyTrash } from "react-icons/fc";
 
 //디자인 불러오기
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -11,6 +13,7 @@ import 'font-awesome/css/font-awesome.min.css'; // FontAwe
 import "bootswatch/dist/cosmo/bootstrap.min.css"
 import "bootstrap";
 import './index.css';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

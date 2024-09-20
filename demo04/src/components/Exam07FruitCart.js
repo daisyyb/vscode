@@ -1,4 +1,5 @@
 import { useState, useCallback, useMemo } from "react";
+import { FcApproval } from "react-icons/fc"; 
 
 const FruitPurchase = () => {
   // state
@@ -34,8 +35,8 @@ const FruitPurchase = () => {
       {
         ...input,
         no: no,
-        price: parseInt(input.price, 10), // 가격은 숫자로 변환
-        quantity: parseInt(input.quantity, 10), // 갯수는 숫자로 변환
+        price: parseInt(input.price, 10),
+        quantity: parseInt(input.quantity, 10),
       },
     ]);
 
@@ -47,8 +48,13 @@ const FruitPurchase = () => {
     });
   }, [input, fruitList]);
 
+  // 과일 삭제하는 함수
+  const deleteFruit = useCallback((no) => {//필터를 통해서 no 가 다른 함수만을 걸러내어 배열한다 즉 번호가 맞는다면 제거되는것
+    setFruitList((prevFruitList) => prevFruitList.filter((fruit) => fruit.no !== no));
+  }, []);
+
   // 총 구매 금액 계산 (useMemo로 최적화)
-  const totalPrice = useMemo(() => {
+  const totalPrice = useMemo(() => {//reduse 함수는 배열 순회 함수 반복문과 비슷한 맥락, 초기값은 0
     return fruitList.reduce((total, fruit) => total + (fruit.price * fruit.quantity), 0);
   }, [fruitList]);
 
@@ -64,6 +70,7 @@ const FruitPurchase = () => {
                 <th>가격 (원)</th>
                 <th>갯수</th>
                 <th>총 금액</th>
+                <th>삭제</th>
               </tr>
             </thead>
             <tbody>
@@ -74,6 +81,11 @@ const FruitPurchase = () => {
                   <td>{fruit.price} 원</td>
                   <td>{fruit.quantity}</td>
                   <td>{fruit.price * fruit.quantity} 원</td>
+                  <td>
+                    <button className="btn btn-danger" onClick={() => deleteFruit(fruit.no)}>
+                      삭제
+                    </button>
+                  </td>
                 </tr>
               ))}
               <tr>
